@@ -1,0 +1,20 @@
+on:
+  - push
+jobs:
+  ruby:
+    strategy: 
+      matrix:
+        tool:
+          - rspec
+          - rubocop
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1.117.0
+        with:
+          ruby-version: '3.1.2'
+      - run: |
+          bundle config set clean true
+          bundle config set path .bundle
+          bundle install
+          bundle exec ${{matrix.tool}}
