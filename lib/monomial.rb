@@ -8,7 +8,8 @@ class Monomial
   end
 
   def eql?(other)
-    self.class == other.class && @degree.eql?(other.degree)
+    self.class == other.class &&
+      @degree.eql?(other.degree)
   end
 
   def ==(other)
