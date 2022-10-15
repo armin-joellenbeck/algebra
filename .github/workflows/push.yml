@@ -1,20 +1,18 @@
 on:
   - push
 jobs:
-  ruby:
-    strategy: 
-      matrix:
-        tool:
-          - rspec
-          - rubocop
+  rake:
     runs-on: ubuntu-latest
+    env:
+      BUNDLE_CLEAN: true
+      BUNDLE_PATH: .bundle
     steps:
       - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1.118.0
         with:
-          ruby-version: '3.1.2'
-      - run: |
-          bundle config set clean true
-          bundle config set path .bundle
+          bundler-cache: true
+          ruby-version: .ruby-version
+      - name: Run rake
+        run: |
           bundle install
-          bundle exec ${{matrix.tool}}
+          bundle exec rake
