@@ -1,9 +1,12 @@
 on:
   pull_request_target:
     branches:
-      - main  
+      - main
+    types:
+      - closed
 jobs:
   deploy:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - run: echo 'Dummy deploy'
