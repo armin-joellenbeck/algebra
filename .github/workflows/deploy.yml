@@ -1,0 +1,9 @@
+on:
+  - pull_request_target
+      branches:
+        - main  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Dummy deploy'
