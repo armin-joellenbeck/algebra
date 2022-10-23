@@ -3,16 +3,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      BUNDLE_CLEAN: true
-      BUNDLE_PATH: .bundle
     steps:
       - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1.118.0
         with:
           bundler-cache: true
           ruby-version: .ruby-version
-      - name: Run rake
-        run: |
-          bundle install
-          bundle exec rake
+      - run: bundle exec rake
