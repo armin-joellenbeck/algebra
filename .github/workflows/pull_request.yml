@@ -9,4 +9,4 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: .ruby-version
-      - run: bundle exec rake
+      - run: rake

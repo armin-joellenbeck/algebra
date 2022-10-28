@@ -1,11 +1,9 @@
-desc 'Run rspec'
-task :spec do
-  sh 'rspec'
-end
+require 'bundler/setup'
 
-desc 'Run rubocop'
-task :rubocop do
-  sh 'rubocop'
-end
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new
+
+require 'rubocop/rake_task'
+RuboCop::RakeTask.new
 
 task default: %i[spec rubocop]
